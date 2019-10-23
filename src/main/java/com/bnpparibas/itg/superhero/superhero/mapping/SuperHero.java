@@ -3,7 +3,7 @@ package com.bnpparibas.itg.superhero.superhero.mapping;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Entity
@@ -23,17 +23,20 @@ public class SuperHero {
     @JoinColumn(name = "costume_id")
     private Costume costume;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(
             name = "superhero_has_abilities",
             joinColumns = @JoinColumn(name = "superhero_id"),
             inverseJoinColumns = @JoinColumn(name = "ability_id")
     )
-    private List<Ability> abilities;
+    private Set<Ability> abilities;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="SUPER_HERO_ID", referencedColumnName = "ID")
-    private List<Enemy> enemies;
+    @JoinColumn(name="SUPER_HERO_ID")
+    private Set<Enemy> enemies;
 
     private SuperHero() {}
 
