@@ -26,4 +26,11 @@ public class Costume {
     private Color color;
 
     private Costume() {}
+
+    public Costume(boolean cape, boolean belt, boolean hat, Color color) {
+        this.cape = cape;
+        this.belt = belt;
+        this.hat = hat;
+        this.color = color;
+    }
 }

@@ -22,4 +22,9 @@ public class Enemy {
     private SuperHero superHero;
 
     private Enemy() {}
+
+    public Enemy(String name, SuperHero superHero) {
+        this.name = name;
+        this.superHero = superHero;
+    }
 }

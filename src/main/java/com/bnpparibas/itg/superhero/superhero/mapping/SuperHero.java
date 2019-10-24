@@ -23,10 +23,7 @@ public class SuperHero {
     @JoinColumn(name = "costume_id")
     private Costume costume;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "superhero_has_abilities",
             joinColumns = @JoinColumn(name = "superhero_id"),
@@ -35,9 +32,16 @@ public class SuperHero {
     private Set<Ability> abilities;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="SUPER_HERO_ID")
+    @JoinColumn(name="super_hero_id")
     private Set<Enemy> enemies;
 
     private SuperHero() {}
 
+    public SuperHero(String name, String secretIdentity, Costume costume, Set<Ability> abilities, Set<Enemy> enemies) {
+        this.name = name;
+        this.secretIdentity = secretIdentity;
+        this.costume = costume;
+        this.abilities = abilities;
+        this.enemies = enemies;
+    }
 }

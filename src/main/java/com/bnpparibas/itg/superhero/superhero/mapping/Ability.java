@@ -13,6 +13,9 @@ import java.util.Set;
 public class Ability {
 
     @Id
+    @GeneratedValue
+    private Long id;
+
     @Enumerated(EnumType.STRING)
     @Column
     private TypeAbility typeAbility;
@@ -24,4 +27,10 @@ public class Ability {
     private Set<SuperHero> superHeros;
 
     private Ability() {}
+
+    public Ability(TypeAbility typeAbility, String description, Set<SuperHero> superHeros) {
+        this.typeAbility = typeAbility;
+        this.description = description;
+        this.superHeros = superHeros;
+    }
 }
