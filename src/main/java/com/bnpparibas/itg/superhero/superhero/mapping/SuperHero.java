@@ -15,7 +15,7 @@ public class SuperHero {
     @Column
     private String name;
     @Column
-    private String secret_identity;
+    private String secretIdentity;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "costume_id")
@@ -35,9 +35,10 @@ public class SuperHero {
 
     private SuperHero() {}
 
-    public SuperHero(String name, String secret_identity, Costume costume, Set<Ability> abilities, Set<Enemy> enemies) {
+    public SuperHero(String name, String secretIdentity, Costume costume,
+                     Set<Ability> abilities, Set<Enemy> enemies) {
         this.name = name;
-        this.secret_identity = secret_identity;
+        this.secretIdentity = secretIdentity;
         this.costume = costume;
         this.abilities = abilities;
         this.enemies = enemies;
